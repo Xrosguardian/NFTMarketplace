@@ -74,22 +74,34 @@ contract NFTMarketplace is ERC721URIStorage {
             price: _price
         });
     }
+
+    // Event Declaration if NFT got sold
+    event NFTSold(uint256 indexed tokenId, address indexed buyer, uint256 price);
+
     //creating executeSales Function
     function executeSale(uint256 tokenId) public payable{
         NFTListing storage listing = tokenIdToListing[tokenId];
+        // Ensure that the listing exists
+        require(listing.seller != address(0), "This token is not listed for sale");
         uint256 price = listing.price;
         address payable seller = listing.seller;
         //Checking the amount seller is sending to approve sales
         require(msg.value == price,"Please send the asking price to complete purchase. Dont Scam others");
         //if amount sent is equal to asking price
+        _transfer(listing.owner, msg.sender, tokenId);
+
         listing.seller = payable(msg.sender);
         totalItemsSold++;
 
-        _transfer(listing.owner, msg.sender, tokenId);
 
         uint256 listingFee = (price * listingFeePercent) / 100;
         marketplaceOwner.transfer(listingFee);
         seller.transfer(msg.value - listingFee);
+        // Remove the listing after sale
+        delete tokenIdToListing[tokenId];
+
+        // Emit a Sale event for tracking
+        emit NFTSold(tokenId, msg.sender, price);
     }
     //Function to get all NFTS in market Place
      function getAllListedNFTs() public view returns (NFTListing[] memory){
