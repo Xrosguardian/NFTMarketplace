@@ -1,0 +1,99 @@
+/* Header Styling */
+.header {
+  padding: 25px 0;
+  background-color: #151515; /* Dark background */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Deep shadow */
+  font-family: 'Poppins', sans-serif; /* Modern font */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Container for header content */
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 1400px;
+}
+
+/* Navigation bar styling */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 30px; /* Spacing between nav items */
+}
+
+/* Navigation links container */
+.navLinks {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Individual nav link */
+.navLinks li {
+  margin-right: 20px;
+}
+
+.navLinks li:last-child {
+  margin-right: 0;
+}
+
+/* Link styling */
+.link {
+  color: #ffffff; /* Bright white text */
+  font-weight: 700;
+  font-size: 16px;
+  text-transform: uppercase;
+  position: relative;
+  padding-bottom: 5px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover effect for links */
+.link:hover {
+  color: #00cffd; /* Cyan color on hover */
+  transform: scale(1.05); /* Slight scale on hover */
+}
+
+/* Call-to-action button */
+.ctaBtn {
+  background: linear-gradient(135deg, #00cffd, #b57edc); /* Gradient background */
+  font-size: 16px;
+  font-weight: 600;
+  padding: 12px 25px;
+  border-radius: 50px; /* Rounded button */
+  color: #fff;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  border: none;
+}
+
+/* Button hover effect */
+.ctaBtn:hover {
+  background: linear-gradient(135deg, #b57edc, #00cffd); /* Reverse gradient */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Button styles when inactive */
+.inactivebtn {
+  background-color: #444; /* Dark gray */
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.inactivebtn:hover {
+  background-color: #666; /* Lighter gray */
+}
+
+/* Button styles when active */
+.activebtn {
+  background-color: #555;
+  color: #fff;
+  cursor: not-allowed;
+  opacity: 0.8;
+}

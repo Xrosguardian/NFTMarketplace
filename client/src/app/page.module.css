@@ -1,0 +1,71 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: linear-gradient(90deg, #3A1C71 0%, #D76D77 50%, #FFAF7B 100%); /* A blend of purples and warm tones for a modern aesthetic */
+}
+/* Hero section for prominent content */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1500px; /* Max width for main content */
+  margin: 0 auto 90px auto; /* Centered with margin at the bottom */
+  width: 100%; /* Full width */
+  flex-grow: 1; /* Allow flex-grow for expansion */
+  padding: 0 20px; /* Horizontal padding */
+  gap: 20px; /* Space between elements */
+}
+
+/* Heading style */
+.heading {
+  font-size: 60px; /* Large font size for the heading */
+  line-height: 1.05; /* Line height for readability */
+  margin-bottom: 3.2rem; /* Bottom margin for spacing */
+  color: #fff; /* White color for contrast */
+}
+
+/* Description style */
+.description {
+  font-size: 24px; /* Medium font size for description */
+  line-height: 1.6; /* Line height for readability */
+  margin-bottom: 4.8rem; /* Bottom margin for spacing */
+  margin-right: 20px; /* Right margin for alignment */
+  color: #fff; /* White color for consistency with heading */
+}
+
+/* Button container */
+.btns {
+  display: flex;
+  align-items: center; /* Center items vertically */
+  gap: 32px; /* Space between buttons */
+}
+
+/* Common button styles */
+.btn {
+  background-color: #fff; /* White background for buttons */
+  color: #000; /* Black text for visibility */
+  font-size: 20px; /* Font size for buttons */
+  font-weight: 600; /* Semi-bold text */
+  padding: 16px 32px; /* Padding for a larger clickable area */
+  border-radius: 9px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+/* Hover effect for standard button */
+.btn:hover {
+  background-color: #ddd; /* Light gray on hover */
+}
+
+/* Buy button specific styles */
+.buyBtn {
+  background-color: #ff6f61; /* Vibrant color for the buy button */
+  color: #fff; /* White text */
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+/* Hover effect for buy button */
+.buyBtn:hover {
+  background-color: #e65c50; /* Darker shade on hover */
+}

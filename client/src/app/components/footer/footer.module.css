@@ -1,0 +1,79 @@
+/* Footer Styling */
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #151515; /* Dark background */
+  color: #d1d1d1; /* Light text */
+  z-index: 1000;
+  padding: 20px 40px;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+}
+
+/* Flexbox layout for footer content */
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1400px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+/* Footer text styling */
+.footer p {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: #888; /* Subtle text color */
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+/* Social Links styling */
+.socialLinks {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.socialLinks li {
+  display: inline-block;
+  background: linear-gradient(135deg, #00cffd, #b57edc); /* Gradient background for icons */
+  padding: 8px;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+/* Social icons styling */
+.socialLinks img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* Hover effect for social icons */
+.socialLinks a:hover img {
+  transform: scale(1.15);
+  filter: brightness(1.2); /* Brighter on hover */
+}
+
+/* Social links hover effect */
+.socialLinks a:hover {
+  opacity: 1;
+}
+
+/* Social links text */
+.socialLinks a {
+  color: #fff; /* White text for social icons */
+  text-decoration: none;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}

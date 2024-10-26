@@ -1,0 +1,90 @@
+/* Tile container */
+.tile {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  background-color: #151515; /* Dark background for a sleek look */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Slight scale on hover for entire tile */
+.tile:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Image container with hover effect */
+.imageContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s ease;
+  
+}
+
+.imageContainer:hover {
+  transform: scale(1.08); /* Enhanced scale effect on hover */
+}
+
+/* Overlay effect with a dark-to-transparent gradient */
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.9),
+      rgba(0, 0, 0, 0.4)
+  ); /* Black gradient overlay */
+  padding: 20px;
+  box-sizing: border-box;
+  transition: opacity 0.4s ease, transform 0.3s ease;
+  opacity: 0;
+  transform: translateY(100%);
+}
+
+/* Overlay becomes visible on hover */
+.tile:hover .overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Smooth underline and slide effect for overlay text */
+.overlay:hover {
+  text-decoration: underline;
+  transform: translateY(-10px);
+  cursor: pointer;
+}
+
+/* Overlay text styling */
+.text {
+  color: #fff; /* Bright white text for clarity */
+  font-family: 'Poppins', sans-serif; /* Modern font */
+}
+
+.text strong {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  display: block;
+  letter-spacing: 1px;
+}
+
+/* Paragraph text inside the overlay */
+.text p {
+  font-size: 1rem;
+  margin: 0;
+  color: #d1d1d1; /* Slightly muted text for better contrast */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 3em;
+  white-space: nowrap;
+  transition: color 0.3s ease;
+}
+
+/* On hover, text becomes more vibrant */
+.overlay:hover .text p {
+  color: #ffffff;
+}

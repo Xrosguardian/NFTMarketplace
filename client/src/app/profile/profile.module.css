@@ -1,0 +1,109 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background: linear-gradient(90deg, #3A1C71 0%, #D76D77 50%, #FFAF7B 100%); /* A blend of purples and warm tones for a modern aesthetic */
+  }
+/* Inner container for centering content */
+.innerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+/* Content area with scrollable section */
+.content {
+    max-width: 1500px;
+    margin: 0 auto 90px auto;
+    max-height: 700px;
+    overflow-y: auto;
+    padding: 10px; /* Adjusted padding for better spacing */
+    background-color: rgba(255, 255, 255, 0.1); /* Subtle white background for contrast */
+    border-radius: 10px; /* Rounded corners for aesthetic appeal */
+}
+
+/* User information section */
+.userInfo {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* User label styling */
+.userInfo .label {
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #eee; /* Light gray color for labels */
+}
+
+/* Address styling */
+.address {
+    font-size: 22px;
+    font-weight: bold;
+    color: #fff; /* White text for contrast */
+}
+
+/* Stats section styling */
+.stats {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Stat label styling */
+.stat .label {
+    font-size: 24px;
+    font-weight: bold;
+    margin-right: 10px;
+    color: #eee; /* Light gray color for labels */
+}
+
+/* Value styling for stats */
+.value {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff; /* White text for better visibility */
+}
+
+/* Heading styling */
+.heading {
+    font-size: 38px;
+    text-align: center;
+    color: #ffffff; /* White for readability */
+    margin: 16px 0 20px; /* Spacing for the heading */
+}
+
+/* NFT section styling */
+.nftSection {
+    margin-top: 20px;
+}
+
+/* NFT grid layout for responsive design */
+.nftGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive column layout */
+    grid-gap: 20px;
+}
+
+/* No NFTs available message */
+.noNFT {
+    font-size: 28px;
+    font-weight: bold;
+    color: #ff5555; /* Enhanced warning color for visibility */
+    text-align: center;
+    margin: 16px 0;
+}
+
+/* Not connected warning message */
+.notConnected {
+    font-size: 40px;
+    font-weight: bold;
+    color: #ff5555; /* Bright red for emphasis */
+    text-align: center;
+    margin: 16px 0;
+}
