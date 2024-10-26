@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background: linear-gradient(90deg, #3A1C71 0%, #D76D77 50%, #FFAF7B 100%); /* A blend of purples and warm tones for a modern aesthetic */
+  background: linear-gradient(90deg, #3A1C71 0%, #D76D77 50%, #FFAF7B 100%);
 }
 
 /* Inner container for centering content */
@@ -12,24 +12,25 @@
   align-content: center;
   justify-content: center;
   flex-direction: column;
+  margin-top: 20px;
   flex-grow: 1;
 }
 
 /* Content area with a light background and box shadow */
 .content {
-  background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent for depth */
+  background-color: rgba(255, 255, 255, 0.9);
   width: 540px;
-  padding: 40px; /* Uniform padding */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Deeper shadow for subtle depth */
+  padding: 40px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  margin: 0 auto 90px; /* Center and space out */
+  margin: 0 auto 90px;
 }
 
 /* Not connected warning message */
 .notConnected {
   font-size: 40px;
   font-weight: bold;
-  color: #ff5555; /* Bright red for warnings */
+  color: #ff5555;
   max-width: 1500px;
   margin: 0 auto 90px;
   padding: 0 10px;
@@ -38,11 +39,11 @@
 /* Heading style */
 .heading {
   font-size: 38px;
-  color: #e67e22; /* Accent color */
-  margin: 20px 0 32px; /* Top and bottom margin */
+  color: #e67e22;
+  margin: 20px 0 32px;
   text-align: center;
-  text-transform: uppercase; /* Uppercase for emphasis */
-  font-weight: 800; /* Bold font */
+  text-transform: uppercase;
+  font-weight: 800;
 }
 
 /* Form section spacing */
@@ -63,25 +64,25 @@
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 10px;
-  color: #e67e22; /* Accent color */
+  color: #e67e22;
 }
 
 /* Required field indicator */
 .Label::after {
   content: "*";
-  color: red; /* Red for required fields */
+  color: red;
   font-size: 16px;
 }
 
 /* Input field styles */
 .Input {
   width: 100%;
-  padding: 12px 16px; /* Consistent padding */
+  padding: 12px 16px;
   font-size: 16px;
-  background-color: #f8f8f8; /* Light background for inputs */
-  color: #000; /* Black text for inputs */
-  border: 1px solid #ddd; /* Light gray border */
-  border-radius: 9px; /* Rounded corners */
+  background-color: #f8f8f8;
+  color: #000;
+  border: 1px solid #ddd;
+  border-radius: 9px;
 }
 
 /* Text area for larger input */
@@ -91,7 +92,7 @@
 
 /* Message styles for alerts */
 .msg {
-  color: red; /* Alert color */
+  color: red;
   font-weight: 500;
   text-align: center;
   margin-top: 10px;
@@ -105,7 +106,7 @@
   margin-top: 16px;
   font-size: 18px;
   font-weight: 700;
-  padding: 12px 24px; /* Larger clickable area */
+  padding: 12px 24px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -113,42 +114,93 @@
 
 /* Inactive button styles */
 .inactivebtn {
-  background-color: #888; /* Gray for disabled buttons */
-  color: #aaa; /* Light gray text */
-  cursor: not-allowed; /* Not allowed cursor */
-  opacity: 0.5; /* Reduced opacity */
+  background-color: #888;
+  color: #aaa;
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
 /* Active button styles */
 .activebtn {
-  background-color: #e67e22; /* Accent color */
-  color: #fff; /* White color for text */
-  cursor: pointer; /* Pointer cursor */
+  background-color: #e67e22;
+  color: #fff;
+  cursor: pointer;
 }
 
 /* Hover effect for active button */
 .activebtn:hover {
-  background-color: #a15818; /* Darker shade on hover */
+  background-color: #a15818;
 }
 
 /* Spinner animation keyframes */
 @keyframes spin {
   0% {
-      transform: rotate(0deg);
+    transform: rotate(0deg);
   }
   100% {
-      transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
 /* Spinner style */
 .spinner {
   display: inline-block;
-  border: 4px solid #aaa; /* Light gray border */
-  border-left-color: #fff; /* White left border for visual effect */
-  border-radius: 50%; /* Circular spinner */
-  margin-right: 8px; /* Spacing to the right */
+  border: 4px solid #aaa;
+  border-left-color: #fff;
+  border-radius: 50%;
+  margin-right: 8px;
   width: 24px;
   height: 24px;
-  animation: spin 1s linear infinite; /* Continuous rotation */
+  animation: spin 1s linear infinite;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .content {
+    width: 90%; /* Full width on small screens */
+    padding: 20px; /* Reduced padding */
+  }
+
+  .heading {
+    font-size: 32px; /* Smaller heading on mobile */
+  }
+
+  .Label {
+    font-size: 16px; /* Smaller label size */
+  }
+
+  .Input, .TextArea {
+    font-size: 14px; /* Smaller input size */
+  }
+
+  .btn {
+    font-size: 16px; /* Smaller button text */
+    padding: 10px 20px; /* Adjust button padding */
+  }
+
+  .notConnected {
+    font-size: 30px; /* Smaller warning message */
+  }
+}
+
+@media (max-width: 480px) {
+  .heading {
+    font-size: 28px; /* Further reduced heading size */
+  }
+
+  .Label {
+    font-size: 14px; /* Smaller label size */
+  }
+
+  .Input, .TextArea {
+    font-size: 12px; /* Smaller input size */
+  }
+
+  .btn {
+    font-size: 14px; /* Further reduced button text */
+  }
+
+  .notConnected {
+    font-size: 24px; /* Even smaller warning message */
+  }
 }

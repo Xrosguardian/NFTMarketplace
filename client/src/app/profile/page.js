@@ -71,16 +71,16 @@ export default function Profile() {
             <>
               <div className={styles.userInfo}>
                 <span className={styles.label}>Wallet Address:</span>
-                <span className={styles.address}>{userAddress}</span>
+                <p className={styles.address}>{userAddress}</p>
               </div>
               <div className={styles.stats}>
                 <div className={styles.stat}>
                   <span className={styles.label}>Number of NFTs:</span>
-                  <span className={styles.value}>{items?.length}</span>
+                  <p className={styles.value}>{items?.length}</p>
                 </div>
                 <div className={styles.stat}>
                   <span className={styles.label}>Total Value:</span>
-                  <span className={styles.value}>{totalPrice} ETH</span>
+                  <p className={styles.value}>{totalPrice} ETH</p>
                 </div>
               </div>
               <div className={styles.nftSection}>

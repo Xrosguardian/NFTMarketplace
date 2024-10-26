@@ -1,10 +1,10 @@
-"use client"
-import { useContext } from 'react'
-import styles from './header.module.css'
-import { WalletContext } from '@/app/context/wallet'
-import { BrowserProvider } from 'ethers';
-import Image from 'next/image';
-import Link from 'next/link';
+"use client";
+import { useContext } from "react";
+import styles from "./header.module.css";
+import { WalletContext } from "@/app/context/wallet";
+import { BrowserProvider } from "ethers";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Header() {
   const {
@@ -18,7 +18,8 @@ export default function Header() {
 
   const connectWallet = async () => {
     if (!window.ethereum) {
-      throw new Error("Metamask is not installed");
+      alert("Please install MetaMask!");
+      return;
     }
 
     try {
@@ -33,11 +34,12 @@ export default function Header() {
       const sepoliaNetworkId = "11155111";
 
       if (chainID.toString() !== sepoliaNetworkId) {
-        alert("Please switch your MetaMask to sepolia network");
+        alert("Please switch your MetaMask to the Sepolia network");
         return;
       }
     } catch (error) {
-      console.error("connection error: ", error);
+      console.error("Connection error: ", error);
+      alert("Failed to connect wallet. Please try again.");
     }
   };
 
@@ -46,7 +48,13 @@ export default function Header() {
       <div className={styles.container}>
         <div className={styles.logo}>
           <Link href="/">
-            <Image src="/logo.png" width={280} height={44} objectFit="cover" alt="logo" />
+            <Image
+              src="/logo.png"
+              width={300}
+              height={50}
+              objectFit="cover"
+              alt="logo"
+            />
           </Link>
         </div>
         <nav className={styles.nav}>
@@ -58,7 +66,7 @@ export default function Header() {
             </li>
             <li>
               <Link href="/sellNFT" className={styles.link}>
-                List
+                Sell NFT
               </Link>
             </li>
             <li>
@@ -72,7 +80,9 @@ export default function Header() {
               isConnected ? styles.activebtn : styles.inactivebtn
             }`}
             onClick={connectWallet}
-          >
+            aria-label={
+              isConnected ? `Connected as ${userAddress}` : "Connect wallet"
+            }>
             {isConnected ? (
               <>{userAddress?.slice(0, 8)}...</>
             ) : (

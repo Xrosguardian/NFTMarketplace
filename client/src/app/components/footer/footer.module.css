@@ -1,6 +1,6 @@
 /* Footer Styling */
 .footer {
-  position: fixed;
+  position: relative;
   bottom: 0;
   left: 0;
   width: 100%;
@@ -31,6 +31,7 @@
   color: #888; /* Subtle text color */
   text-transform: uppercase;
   opacity: 0.85;
+  flex: 1; /* Allows text to take available space */
 }
 
 /* Social Links styling */
@@ -76,4 +77,46 @@
   text-decoration: none;
   opacity: 0.8;
   transition: opacity 0.3s ease;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .footer {
+    padding: 20px 10px; /* Reduce padding */
+  }
+
+  .content {
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center align items */
+  }
+
+  .socialLinks {
+    flex-direction: row; /* Ensure horizontal layout */
+    justify-content: center; /* Center the links */
+  }
+
+  .footer p {
+    margin-bottom: 10px; /* Space between text and social links */
+    font-size: 12px; /* Smaller font size */
+  }
+
+  .socialLinks li {
+    padding: 6px; /* Reduce padding on social icons */
+  }
+
+  .socialLinks img {
+    width: 30px; /* Smaller icon size */
+    height: 30px; /* Smaller icon size */
+  }
+}
+
+@media (max-width: 480px) {
+  .footer p {
+    font-size: 10px; /* Further reduce font size */
+  }
+
+  .socialLinks img {
+    width: 25px; /* Even smaller icon size */
+    height: 25px; /* Even smaller icon size */
+  }
 }

@@ -1,6 +1,6 @@
 /* Header Styling */
 .header {
-  padding: 25px 0;
+  padding: 25px 50px;
   background-color: #151515; /* Dark background */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Deep shadow */
   font-family: 'Poppins', sans-serif; /* Modern font */
@@ -96,4 +96,53 @@
   color: #fff;
   cursor: not-allowed;
   opacity: 0.8;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column; /* Stack items vertically */
+    align-items: flex-start; /* Align items to the left */
+  }
+
+  .nav {
+    flex-direction: column; /* Stack nav items vertically */
+    width: 100%; /* Full width */
+    align-items: flex-start; /* Align to start */
+    margin-top: 10px; /* Space between header and nav */
+  }
+
+  .navLinks {
+    flex-direction: column; /* Stack links vertically */
+    gap: 15px; /* Spacing between links */
+    width: 100%; /* Full width */
+  }
+
+  .navLinks li {
+    margin-right: 0; /* Remove right margin */
+  }
+
+  .link {
+    font-size: 14px; /* Smaller font size */
+  }
+
+  .ctaBtn {
+    width: 100%; /* Full width button */
+    text-align: center; /* Center text */
+    margin-top: 10px; /* Space above the button */
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 15px 20px; /* Reduced padding */
+  }
+
+  .link {
+    font-size: 12px; /* Further reduce font size */
+  }
+
+  .ctaBtn {
+    padding: 10px 20px; /* Smaller button padding */
+  }
 }

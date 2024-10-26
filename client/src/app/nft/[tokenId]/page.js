@@ -3,7 +3,7 @@ import { WalletContext } from "../../context/wallet";
 import { useParams, useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 import MarketplaceJson from "../../marketplace.json";
-import { ethers, parseEther, parseUnits } from "ethers";
+import { ethers } from "ethers";
 import axios from "axios";
 import GetIpfsUrlFromPinata from "../../utils/utils";
 import Image from "next/image";
@@ -15,7 +15,7 @@ export default function NFTPage() {
   const params = useParams();
   const tokenId = params.tokenId;
   const [item, setItem] = useState();
-  const [msg, setmsg] = useState();
+  const [msg, setMsg] = useState();
   const [btnContent, setBtnContent] = useState("Buy NFT");
   const { isConnected, userAddress, signer } = useContext(WalletContext);
   const router = useRouter();
@@ -28,10 +28,8 @@ export default function NFTPage() {
       signer
     );
     let tokenURI = await contract.tokenURI(tokenId);
-    console.log(tokenURI);
     const listedToken = await contract.getNFTListing(tokenId);
     tokenURI = GetIpfsUrlFromPinata(tokenURI);
-    console.log(tokenURI);
     const meta = (await axios.get(tokenURI)).data;
     const item = {
       price: meta.price,
@@ -62,51 +60,34 @@ export default function NFTPage() {
 
   async function buyNFT() {
     try {
-        if (!signer) return;
-
-        let contract = new ethers.Contract(
-            MarketplaceJson.address,
-            MarketplaceJson.abi,
-            signer
-        );
-
-        // Convert the sale price to a format ethers can handle
-        const salePrice = ethers.parseUnits(item.price, "ether").toString();
-
-        setBtnContent("Processing...");
-        setmsg("Buying the NFT... Please Wait (Up to 5 mins)");
-
-        // Attempt to execute the sale
-        let transaction = await contract.executeSale(tokenId, {
-            value: salePrice,
-        });
-
-        // Wait for the transaction to be confirmed
-        await transaction.wait();
-
-        alert("You successfully bought the NFT!");
-        //clear the NFT item from state
-        setItem(null); // Clear the item if you want to remove it from the UI
-        setmsg("");
-        setBtnContent("Buy NFT");
-        router.push("/");
-
+      if (!signer) return;
+      let contract = new ethers.Contract(
+        MarketplaceJson.address,
+        MarketplaceJson.abi,
+        signer
+      );
+      const salePrice = ethers.parseUnits(item.price, "ether").toString();
+      setBtnContent("Processing...");
+      setMsg("Buying the NFT... Please Wait (Up to 5 mins)");
+      let transaction = await contract.executeSale(tokenId, {
+        value: salePrice,
+      });
+      await transaction.wait();
+      alert("You successfully bought the NFT!");
+      setItem(null);
+      setMsg("");
+      setBtnContent("Buy NFT");
+      router.push("/");
     } catch (e) {
-        console.error("Buying Error: ", e);
-        
-        // Reset the button to "Buy NFT" if there are any errors
-        setBtnContent("Buy NFT");
-
-        if (e.message.includes("insufficient funds")) {
-            setmsg("You do not have enough funds for this transaction.");
-        } else if (e.message.includes("This token is not listed for sale")) {
-            setmsg("The NFT is not available for purchase.");
-        } else {
-            setmsg("An error occurred while processing the transaction. Please try again.");
-        }
+      console.error("Buying Error: ", e);
+      setBtnContent("Buy NFT");
+      setMsg(
+        e.message.includes("insufficient funds")
+          ? "You do not have enough funds for this transaction."
+          : "An error occurred while processing the transaction. Please try again."
+      );
     }
-}
-
+  }
 
   return (
     <div className={styles.container}>
@@ -115,9 +96,36 @@ export default function NFTPage() {
         {isConnected ? (
           <div className={styles.content}>
             <div className={styles.nftGrid}>
-              <Image src={item?.image} alt="" width={800} height={520} />
+              <div className={styles.nftImageWrapper}>
+                <Image
+                  src={item?.image}
+                  alt={item?.name}
+                  width={800}
+                  height={520}
+                />
+                <div className={styles.overlay}>
+                  <div className={styles.stats}>
+                    <div className={styles.stat}>
+                      <span className={styles.label}>Name:</span>
+                      <span className={styles.value}>{item?.name}</span>
+                    </div>
+                    <div className={styles.stat}>
+                      <span className={styles.label}>Description:</span>
+                      <span className={styles.value}>{item?.description}</span>
+                    </div>
+                    <div className={styles.stat}>
+                      <span className={styles.label}>Price:</span>
+                      <span className={styles.value}>{item?.price} ETH</span>
+                    </div>
+                    <div className={styles.stat}>
+                      <span className={styles.label}>Seller:</span>
+                      <span className={styles.value}>{item?.seller}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <div className={styles.details}>
-                <div className={styles.stats}>
+                {/* <div className={styles.stats}>
                   <div className={styles.stat}>
                     <span className={styles.label}>Name:</span>
                     <span className={styles.value}>{item?.name}</span>
@@ -134,18 +142,15 @@ export default function NFTPage() {
                     <span className={styles.label}>Seller:</span>
                     <span className={styles.value}>{item?.seller}</span>
                   </div>
-                </div>
+                </div> */}
                 <div className={styles.ctaBtn}>
                   <div className={styles.msg}>{msg}</div>
                   {userAddress.toLowerCase() === item?.seller.toLowerCase() ? (
-                    <div className={styles.msgAlert}>You already own this NFT!</div>
+                    <div className={styles.msgAlert}>
+                      You already own this NFT!
+                    </div>
                   ) : (
-                    <button
-                      onClick={() => {
-                        buyNFT();
-                      }}
-                      className={styles.Btn}
-                    >
+                    <button onClick={buyNFT} className={styles.Btn}>
                       {btnContent === "Processing..." && (
                         <span className={styles.spinner} />
                       )}

@@ -1,6 +1,5 @@
 import GetIpfsUrlFromPinata from "../../utils/utils";
 import Image from "next/image";
-
 import styles from "./NFTCard.module.css";
 import Link from "next/link";
 
@@ -15,7 +14,15 @@ export default function NFTCard({ item }) {
   return (
     <div className={styles.tile}>
       <div className={styles.imageContainer}>
-        <Image src={IPFSUrl} alt="" width={500} height={360}  />
+        <Image
+          src={IPFSUrl}
+          alt={item.name}
+          layout="responsive"
+          width={500}
+          height={360}
+          objectFit="cover"
+          objectPosition="center" // Ensures the center of the image is displayed
+        />
       </div>
       <div className={styles.overlay}>
         <Link href={`/nft/${item.tokenId}`} className={styles.text}>

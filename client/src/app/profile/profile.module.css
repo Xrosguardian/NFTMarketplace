@@ -1,109 +1,159 @@
+/* Main container with gradient background */
 .container {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    background: linear-gradient(90deg, #3A1C71 0%, #D76D77 50%, #FFAF7B 100%); /* A blend of purples and warm tones for a modern aesthetic */
-  }
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: linear-gradient(90deg, #3a1c71 0%, #d76d77 50%, #ffaf7b 100%);
+}
+
 /* Inner container for centering content */
 .innerContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 /* Content area with scrollable section */
 .content {
-    max-width: 1500px;
-    margin: 0 auto 90px auto;
-    max-height: 700px;
-    overflow-y: auto;
-    padding: 10px; /* Adjusted padding for better spacing */
-    background-color: rgba(255, 255, 255, 0.1); /* Subtle white background for contrast */
-    border-radius: 10px; /* Rounded corners for aesthetic appeal */
+  max-width: 1200px; /* Increased width for the content area */
+  width: 90%; /* Set width to 90% for better responsiveness */
+  margin: 20px auto 90px; /* Center the content */
+  max-height: 700px;
+  overflow-y: auto;
+  padding: 20px; /* Increased padding for better spacing */
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
 }
 
 /* User information section */
 .userInfo {
-    margin: 20px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align left for better readability */
+  margin-bottom: 50px;
 }
 
 /* User label styling */
 .userInfo .label {
-    font-size: 26px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #eee; /* Light gray color for labels */
+  font-size: 26px;
+  font-weight: bold;
+  color: #eee; /* Light gray color for labels */
 }
 
 /* Address styling */
 .address {
-    font-size: 22px;
-    font-weight: bold;
-    color: #fff; /* White text for contrast */
+  font-size: 22px;
+  font-weight: normal; /* Normal weight for the address */
+  color: #fff; /* White text for contrast */
+  /* margin-bottom: 20px; Space below the address */
 }
 
 /* Stats section styling */
 .stats {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: column; /* Stack stats vertically */
+  align-items: flex-start; /* Align left */
+  margin-bottom: 50px; /* Space below the stats section */
+}
+
+.stat {
+  display: flex;
+  flex-direction: column; /* Stack stats vertically */
+  align-items: flex-start; /* Align left */
+  margin-bottom: 50px; /* Space below the stats section */
+}
+
+/* Stats value styling */
+.stats .value {
+  font-size: 24px;
+  font-weight: bold;
+  margin-right: 20px;
+  color: #eee; /* Light gray color for labels */
 }
 
 /* Stat label styling */
 .stat .label {
-    font-size: 24px;
-    font-weight: bold;
-    margin-right: 10px;
-    color: #eee; /* Light gray color for labels */
+  font-size: 24px;
+  font-weight: bold;
+  margin-right: 10px;
+  color: #eee; /* Light gray color for labels */
 }
 
 /* Value styling for stats */
 .value {
-    font-size: 24px;
-    font-weight: bold;
-    color: #fff; /* White text for better visibility */
+  font-size: 24px;
+  font-weight: normal; /* Normal weight for values */
+  color: #fff; /* White text for better visibility */
 }
 
 /* Heading styling */
 .heading {
-    font-size: 38px;
-    text-align: center;
-    color: #ffffff; /* White for readability */
-    margin: 16px 0 20px; /* Spacing for the heading */
+  font-size: 38px;
+  text-align: center;
+  color: #ffffff;
+  margin: 16px 0 20px;
 }
 
 /* NFT section styling */
 .nftSection {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 /* NFT grid layout for responsive design */
 .nftGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive column layout */
-    grid-gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 20px;
 }
 
 /* No NFTs available message */
 .noNFT {
-    font-size: 28px;
-    font-weight: bold;
-    color: #ff5555; /* Enhanced warning color for visibility */
-    text-align: center;
-    margin: 16px 0;
+  font-size: 28px;
+  font-weight: bold;
+  color: #ff5555; /* Enhanced warning color for visibility */
+  text-align: center;
+  margin: 16px 0;
 }
 
 /* Not connected warning message */
 .notConnected {
-    font-size: 40px;
-    font-weight: bold;
-    color: #ff5555; /* Bright red for emphasis */
-    text-align: center;
-    margin: 16px 0;
+  font-size: 40px;
+  font-weight: bold;
+  color: #ff5555; /* Bright red for emphasis */
+  text-align: center;
+  margin: 16px 0;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .content {
+    max-width: 90%; /* Allow more width on smaller screens */
+    width: 100%; /* Ensure full width on smaller devices */
+    padding: 10px; /* Adjusted padding */
+  }
+
+  .heading {
+    font-size: 28px; /* Smaller heading */
+  }
+
+  .userInfo .label,
+  .stat .label,
+  .value {
+    font-size: 20px; /* Smaller font for labels and values */
+  }
+
+  .address {
+    font-size: 20px; /* Smaller address font */
+  }
+
+  .noNFT {
+    font-size: 24px; /* Smaller font for no NFTs message */
+  }
+
+  .notConnected {
+    font-size: 30px; /* Smaller not connected message */
+  }
 }

@@ -17,11 +17,12 @@
 /* Image container with hover effect */
 .imageContainer {
   position: relative;
-  width: 100%;
-  height: 100%;
+  width: 100%; /* Full width of the parent */
+  height: auto; /* Define a specific height */
+  overflow: hidden; /* Hide overflow if needed */
   transition: transform 0.3s ease;
-  
 }
+
 
 .imageContainer:hover {
   transform: scale(1.08); /* Enhanced scale effect on hover */
@@ -87,4 +88,25 @@
 /* On hover, text becomes more vibrant */
 .overlay:hover .text p {
   color: #ffffff;
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+  .tile {
+    flex: 0 0 calc(50% - 20px); /* 2 tiles per row */
+    margin: 10px; /* Add margin for spacing */
+  }
+}
+
+@media (max-width: 768px) {
+  .tile {
+    flex: 0 0 calc(100% - 20px); /* 1 tile per row */
+    margin: 10px 0; /* Margin for spacing */
+  }
+}
+
+.tileContainer {
+  display: flex;
+  flex-wrap: wrap; /* Wrap tiles to next line */
+  justify-content: space-between; /* Space between tiles */
 }
